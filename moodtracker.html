@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm in minutes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #85bff4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .date {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .mood {
+            margin-top: 10px;
+        }
+
+        .mood label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .tables {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .tables th,
+        .tables td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .tables th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="title">Mood Tracker</p>
+        <select id="week" name="week" class="date">
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+        </select>
+        <div class="mood">
+            <input type="radio" id="mood1" name="mood" class="moods">
+            <label for="mood1">Joyful, Happy, Relaxed, Silly, Content, Great</label><br>
+
+            <input type="radio" id="mood2" name="mood" class="moods">
+            <label for="mood2">Productive, Active, Energetic, Motivated</label><br>
+
+            <input type="radio" id="mood3" name="mood" class="moods">
+            <label for="mood3">Average, Normal, Uneventful, Good</label><br>
+
+            <input type="radio" id="mood4" name="mood" class="moods">
+            <label for="mood4">Sick, Tired, Lazy, Dull, Unmotivated, Bored</label><br>
+
+            <input type="radio" id="mood5" name="mood" class="moods">
+            <label for="mood5">Sad, Lonely, Numb, Depressed, Insecure</label><br>
+
+            <input type="radio" id="mood6" name="mood" class="moods">
+            <label for="mood6">Angry, Frustrated, Anxious, Grumpy</label><br>
+
+            <button id="button1" class="button">Submit</button>
+            <button id="button2" class="button">Delete</button>
+        </div>
+        <div>
+            <table id="table" class="tables">
+                <thead>
+                    <tr>
+                        <th>Weekday</th>
+                        <th>Mood</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be dynamically created here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let weekInput = document.getElementById("week");
+            let moodInputs = document.querySelectorAll(".moods");
+            let buttonSubmit = document.getElementById("button1");
+            let buttonDelete = document.getElementById("button2");
+            let tableBody = document.querySelector("#table tbody");
+
+            let infoArray = [];
+
+            // Load saved information from localStorage on page load
+            readInfo();
+
+            // Populate the table with existing data
+            infoArray.forEach(info => {
+                createNewLine(info.weekDay, info.mood);
+            });
+
+            // Function to save information to localStorage
+            function saveInformation() {
+                localStorage.setItem("mood-info-1709150007", JSON.stringify(infoArray));
+            }
+
+            // Function to read information from localStorage
+            function readInfo() {
+                let storedInfo = localStorage.getItem("mood-info-1709150007");
+                if (storedInfo) {
+                    infoArray = JSON.parse(storedInfo);
+                }
+            }
+
+            // Function to handle the Submit button click event
+            buttonSubmit.addEventListener("click", function () {
+                let selectedDay = weekInput.options[weekInput.selectedIndex].text;
+                let selectedMood = [...moodInputs].find(input => input.checked);
+
+                if (selectedDay && selectedMood) {
+                    let moodText = selectedMood.nextElementSibling.textContent;
+                    createNewLine(selectedDay, moodText);
+
+                    let moodObject = {
+                        weekDay: selectedDay,
+                        mood: moodText
+                    };
+
+                    infoArray.push(moodObject);
+                    saveInformation();
+
+                    // Reset form inputs
+                    weekInput.selectedIndex = 0;
+                    moodInputs.forEach(input => input.checked = false);
+                } else {
+                    alert("Please select both a day and a mood before submitting.");
+                }
+            });
+
+            // Function to handle the Delete button click event
+            buttonDelete.addEventListener("click", function () {
+                tableBody.innerHTML = "";
+                infoArray = [];
+                localStorage.removeItem("mood-info-1709150007");
+            });
+
+            // Function to create a new row in the table
+            function createNewLine(day, mood) {
+                let newRow = document.createElement("tr");
+                let dayCell = document.createElement("td");
+                dayCell.textContent = day;
+                let moodCell = document.createElement("td");
+                moodCell.textContent = mood;
+                newRow.appendChild(dayCell);
+                newRow.appendChild(moodCell);
+                tableBody.appendChild(newRow);
+            }
+        });
+    </script>
+</body>
+
+</html>

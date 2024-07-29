@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm-In-Minutes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .one11{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 750px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        
+        .onek {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .one11 h1 {
+            color: white;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .suggest-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .suggest-button:hover {
+            background-color: #0056b3;
+        }
+
+        #suggestion {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #333;
+            text-align: left;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="one11">
+        <h1>Calm-In-Minutes</h1>
+        <nav>
+            <ul>
+                <li><a class="onek" href="http://localhost/krithathon/">Home</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Depression Level Prediction</h1>
+        <h2>Predicted Depression Level: <span id="prediction">{{ prediction }}</span></h2>
+        <button class="suggest-button" onclick="suggestMedication()">Suggest Medication</button>
+        <div id="suggestion"></div>
+    </div>
+
+    <script>
+        function suggestMedication() {
+            var prediction = document.getElementById('prediction').textContent;
+            var suggestion = document.getElementById('suggestion');
+            var listHTML = '';
+            if (prediction === 'high') {
+                listHTML = '<ul>' +
+                    '<li>SSRIs (e.g., sertraline, fluoxetine)</li>' +
+                    '<li>SNRIs (e.g., venlafaxine, duloxetine)</li>' +
+                    '<li>Consult with your healthcare provider for a personalized treatment plan.</li>' +
+                    '</ul>';
+            } else if (prediction === 'medium') {
+                listHTML = '<ul>' +
+                    '<li>SSRIs (e.g., citalopram, escitalopram)</li>' +
+                    '<li>Cognitive Behavioral Therapy (CBT)</li>' +
+                    '<li>Discuss with your healthcare provider for appropriate treatment.</li>' +
+                    '</ul>';
+            } else if (prediction === 'low') {
+                listHTML = '<ul>' +
+                    '<li>Regular exercise</li>' +
+                    '<li>Healthy diet</li>' +
+                    '<li>Cognitive Behavioral Therapy (CBT)</li>' +
+                    '<li>Consult with your healthcare provider for the best approach.</li>' +
+                    '</ul>';
+            } else {
+                listHTML = 'Please consult with a healthcare provider for a proper diagnosis and treatment plan.';
+            }
+            suggestion.innerHTML = listHTML;
+        }
+    </script>
+</body>
+</html>

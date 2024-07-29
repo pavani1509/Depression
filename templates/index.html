@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="16x16" rel="icon" href="one.png">
+    <title>Calm-In-Minutes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .one11 {
+            display: flex;
+            margin: 0px 180px 0px 0px;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 750px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .onek {
+            text-decoration: none;
+            color: White;
+            font-size: 20px;
+        }
+
+        .one11 h1 {
+            color: White;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <div class="one11">
+                <div>
+                    <h1 class="head1">Depression Level Prediction</h1>
+                </div>
+                <div class="head1">
+                    <ul>
+                        <li><a class="onek" href="http://localhost/krithathon/">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<h1>Depression Level Prediction</h1>
+<form method="post">
+    <label for="Age">Age:</label>
+    <input type="text" id="Age" name="Age" required>
+    
+    <label for="Gender">Gender:</label><br>
+    <input type="text" id="male" name="Gender" value="" required>
+    
+    
+    
+    <label for="Occupation">Occupation:</label>
+    <input type="text" id="Occupation" name="Occupation" required>
+    
+    <label for="Days_Indoors">Days Indoors:</label>
+    <input type="text" id="Days_Indoors" name="Days_Indoors" required>
+    
+    <label for="Growing_Stress">Growing Stress:</label>
+    <input type="text" id="Growing_Stress" name="Growing_Stress" required>
+    
+    <label for="Quarantine_Frustrations">Quarantine Frustrations:</label>
+    <input type="text" id="Quarantine_Frustrations" name="Quarantine_Frustrations" required>
+    
+    <label for="Changes_Habits">Changes in Habits:</label>
+    <input type="text" id="Changes_Habits" name="Changes_Habits" required>
+    
+    <label for="Mental_Health_History">Mental Health History:</label>
+    <input type="text" id="Mental_Health_History" name="Mental_Health_History" required>
+    
+    <label for="Weight_Change">Weight Change:</label>
+    <input type="text" id="Weight_Change" name="Weight_Change" required>
+    
+    <label for="Mood_Swings">Mood Swings:</label>
+    <input type="text" id="Mood_Swings" name="Mood_Swings" required>
+    
+    <label for="Coping_Struggles">Coping Struggles:</label>
+    <input type="text" id="Coping_Struggles" name="Coping_Struggles" required>
+    
+    <label for="Work_Interest">Work Interest:</label>
+    <input type="text" id="Work_Interest" name="Work_Interest" required>
+    
+    <label for="Social_Weakness">Social Weakness:</label>
+    <input type="text" id="Social_Weakness" name="Social_Weakness" required>
+    
+    <button type="submit">Predict</button>
+</form>
+</body>
+</html>

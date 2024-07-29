@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm in minutes</title>
+    <link rel="stylesheet" href="k.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+               <div class="one11">
+                <div>
+                    <h1 class="head1">Psychiartic Services</h1>
+                </div>
+                <div class="head1">
+                    <ul>
+                        <li><a class="onek" href="http://localhost/krithathon/">Home</a></li>
+                    </ul>
+                </div>
+               </div>
+            </div>
+            
+        </div>
+    </header>
+    <br>
+    <h1 class="main-heading">Meet Our Professionals</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="button-grid-container">
+        <div class="button-grid">
+            <button class="grid-button" onclick="initiateAudioCall()">
+                &#x1F4DE; Audio Call<br>
+                <span class="button-desc">Initiate an audio call with a professional</span>
+            </button>
+            <button class="grid-button" onclick="startVideoCall()">
+                &#x1F4F9; Video Call<br>
+                <span class="button-desc">Start a video call to interact visually</span>
+            </button>
+            <button class="grid-button" onclick="scheduleGuide()">
+                &#x1F4D6; Book a Guide<br>
+                <span class="button-desc">Schedule a session with a professional guide</span>
+            </button>
+            <button class="grid-button" onclick="openFileUploader()">
+                &#x1F4E5; Upload Video<br>
+                <span class="button-desc">Click to choose and upload a video file</span>
+            </button>
+        </div>
+    </div>
+    <div class="feedback-section">
+        <h2>ChatBot</h2>
+        <form id="chat-form">
+            <label for="feedback-input">Chat Here:</label><br>
+            <textarea id="feedback-input" name="feedback" placeholder="Type a message..."></textarea><br>
+            <button type="submit" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        function initiateAudioCall() {
+            // Example: Open a call option for audio call (replace with actual implementation)
+            alert('Initiating audio call...');
+        }
+
+        function startVideoCall() {
+            // Example: Open a call option for video call (replace with actual implementation)
+            alert('Starting video call...');
+        }
+
+        function scheduleGuide() {
+            // Example: Open an email client for scheduling a guide (replace with actual implementation)
+            window.location.href = 'mailto:your@email.com';
+        }
+
+    function openFileUploader() {
+    // Function to open file uploader dialog
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'video/*'; 
+    input.onchange = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            alert(`Selected file: ${file.name}`);
+          
+        }
+    };
+    input.click();
+}
+
+        
+    </script>
+</body>
+</html>
